@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.servlet.http.HttpServletRequest;
 
 @Controller
-public class AESAction {
+public class AESAction { 
     /**
      * AES+RSA 简单加密
      * @return
