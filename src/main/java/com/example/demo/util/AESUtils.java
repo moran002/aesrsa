@@ -11,14 +11,6 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class AESUtils {
 
-	/**偏移量,必须是16位字符串*/
-    private static final String IV_STRING = "16-Bytes--String";
-
-    /**
-     * 默认的密钥
-     */
-    public static final String DEFAULT_KEY = "1bd83b249a414036";
-
     /**
      * 产生随机密钥(这里产生密钥必须是16位)
      */
@@ -67,10 +59,4 @@ public class AESUtils {
         }
         return null;
     }
-    
-    public static void main(String[] args) {
-		String plainText = AESUtils.decryptData("F431E6FF9051DA07", "q8jHYk6LSbwC2K4zmr/wRZo8mlH0VdMzPEcAzQadTCpSrPQ/ZnTmuIvQxiLOnUXu","12312");
-		System.out.println("aes加密后: " + plainText);
-	}
-    
 }

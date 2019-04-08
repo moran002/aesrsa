@@ -10,8 +10,7 @@
 </head>
 
 <body>
-    <input type="button" onclick="getAes()" value="AES测试">
-    <input type="button" onclick="getData()" value="AES">
+    <input type="button" onclick="getAes()" value="AES+RSA测试">
 </body>
 
 <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
@@ -27,13 +26,27 @@
     json.moran = "moran";
     var context = AESEnc(key,JSON.stringify(json),iv);
     console.log("AES加密后    ："+context);
-    var rsaKey = RSA(key);
-    var rsaIV = RSA(iv);
+    var rsaKey =window.encodeURIComponent( RSA(key));
+    var rsaIV = window.encodeURIComponent(RSA(iv));
     console.log("rsaKey     ："+rsaKey);
     console.log("rsaIV     ："+rsaIV);
     console.log(AESDec(key, context,iv));
     function getAes() {
         window.location.href ="http://localhost:8080/actionAes?rsaKey="+rsaKey+"&data="+context+"&rsaIV="+rsaIV;
+
     }
 </script>
+
+<ul>
+    <li>aes密码</li>
+    <li>${key}</li>
+    <li>aes密码RSA加密</li>
+    <li>${rsaKey}</li>
+    <li>aes向量</li>
+    <li>${iv}</li>
+    <li>aes向量RSA加密</li>
+    <li>${rsaIV}</li>
+    <li>加密数据</li>
+    <li>${data}</li>
+</ul>
 </html>

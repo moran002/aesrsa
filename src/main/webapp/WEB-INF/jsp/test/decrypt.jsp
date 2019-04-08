@@ -16,27 +16,18 @@
 <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
 <script src="../../../js/aes.js"></script>
 <script>
-    var key = getKey();
-    var iv = getKey();
-    console.log("一个随机16位key     ："+key);
-    var json = {};
-    json.userid = "xiyang";
-    json.moran = "moran";
-    var context = AESEnc(key,JSON.stringify(json),iv);
-    console.log("AES加密后    ："+context);
-
-
-    console.log(AESDec(key, context,iv));
-    function getAes() {
-        window.location.href ="http://localhost:8080/AES?key="+key+"&data="+context+"&iv="+iv;
-    }
+        function getDecrypt(rsaKey,rsaIV,aesData) {
+            var key = decrypt(rsaKey);
+            var iv = decrypt(rsaIV);
+            var data = AESDec(key,aesData,iv);
+            document.getElementById("data").value = data;
+        }
 </script>
+    <input type="button" onclick="getDecrypt(${rsaKey},${rsaIV},${aesData})" value="解密数据">
     <ul>
-        <li>aes密码</li>
-        <li>${key}</li>
-        <li>aes向量</li>
-        <li>${iv}</li>
         <li>加密数据</li>
-        <li>${data}</li>
+        <li>${aesData}</li>
+        <li>解密数据</li>
+        <li id="data">${data}</li>
     </ul>
 </html>
